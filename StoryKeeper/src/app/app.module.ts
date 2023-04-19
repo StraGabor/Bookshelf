@@ -11,20 +11,21 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { MenuComponent } from './shared/menu/menu.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatLegacyListModule as MatListModule } from "@angular/material/legacy-list";
+import { MatListModule } from "@angular/material/list";
 import { MatIconModule } from "@angular/material/icon";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatButtonModule } from "@angular/material/button";
 import { FlexLayoutModule } from "@angular/flex-layout";
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomePageComponent,
-    SignUpComponent,
-    CartComponent,
-    OrderComponent,
-    ProfileComponent,
+    //HomePageComponent,
+    //SignUpComponent,
+    //CartComponent,
+    //OrderComponent,
+    //ProfileComponent,
     MenuComponent
   ],
   imports: [
@@ -35,7 +36,8 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     MatIconModule,
     MatSidenavModule,
     MatToolbarModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

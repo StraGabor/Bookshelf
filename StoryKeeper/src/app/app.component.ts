@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  changePage(selectedPage: string){
+  changePage(selectedPage: any){
     this.router.navigateByUrl(selectedPage);
   }
 
