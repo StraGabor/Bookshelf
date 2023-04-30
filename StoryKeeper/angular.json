@@ -102,6 +102,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "StoryKeeper:build:production",
+            "firebaseProject": "book-keeper-shop",
+            "firebaseHostingSite": "book-keeper-shop"
+          }
         }
       }
     }

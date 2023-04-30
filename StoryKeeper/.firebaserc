@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "book-keeper-shop": {
+      "hosting": {
+        "StoryKeeper": [
+          "book-keeper-shop"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "book-keeper-shop"
+  }
+}
