@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { UserService } from 'src/app/shared/services/user.service';
+import { User } from "../../shared/models/User";
 
 @Component({
   selector: 'app-registration',
@@ -47,6 +48,29 @@ export class RegistrationComponent implements OnInit {
     return this.signUp.get('username');
   }
 
+  onSubmit(){
+    if(this.password !== this.repassword){
+      console.log("Paaswords doesn't match!");
+      return;
+    }
 
-
+    this.authService.signup(this.email?.value, this.password?.value).then(cred => {
+      const user:User = {
+        id: cred.user?.uid as string,
+        email: this.email?.value as string,
+        username: this.username?.value as string, 
+        name: {
+          firstname: this.signUp.get('firstname')?.value as string,
+          lastname: this.signUp.get('lastname')?.value as string
+        }
+      };
+      this.userService.createUser(user).then(_ => {
+        console.log("User created succesfully!");
+      }).catch(err => {
+        console.log(err);
+      });
+    }).catch(error => {
+      console.log(error);
+    });
+  }
 }
