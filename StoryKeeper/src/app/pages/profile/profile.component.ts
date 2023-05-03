@@ -28,4 +28,12 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  save(){
+    
+  }
+
+  del(){
+
+  }
+
 }
