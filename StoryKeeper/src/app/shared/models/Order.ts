@@ -1,5 +1,7 @@
 export interface Order{
+    id: string,
     user: string,
     books: string[],
-    time: number
+    time: number,
+    sum: number
 }

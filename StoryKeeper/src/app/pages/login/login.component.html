@@ -1,9 +1,11 @@
-<p class="title">If you have an account, please login!</p>
+<h2>If you have an account, please login!</h2>
 <div id="container">
-    <mat-form-field><mat-label>Email:</mat-label><input matInput type="email" formControlName="email"></mat-form-field>
-    <mat-form-field><mat-label>Password:</mat-label><input matInput type="password" formControlName="password"></mat-form-field>
+    <form [formGroup]="logIn">
+        <mat-form-field><mat-label>Email:</mat-label><input matInput type="email" formControlName="email"></mat-form-field><br>
+        <mat-form-field><mat-label>Password:</mat-label><input matInput type="password" formControlName="password"></mat-form-field><br>
     <span>
         <span><button mat-raised-button color="primary" (click)="login()">Login</button></span>
         <span><button mat-raised-button color="primary" [routerLink]="'/registrate'">Registration</button></span>
     </span>
+    </form>
 </div>

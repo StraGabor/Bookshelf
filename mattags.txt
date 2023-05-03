@@ -1,4 +1,6 @@
 Material tags list:
+	mat-card
+	mat-card-content
 	mat-icon
 	mat-form-field
 	mat-label

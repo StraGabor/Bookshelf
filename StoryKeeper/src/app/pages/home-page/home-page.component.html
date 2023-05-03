@@ -1,8 +1,17 @@
 <div id="books-site">
     <h1>Please choose a book, which would like to buy?</h1>
     <div>
-        <div class="book">
-            
+        <div class="book-list">
+            <mat-card class="book" *ngFor="let book of books">
+                <mat-card-content>
+                    <img mat-card-image src="{{book.img}}" id="image">
+                    <br>
+                    <div id="down">
+                        <mat-card-footer id="price">{{book.price}} Ft</mat-card-footer>
+                        <button (click)="addToCart()" >Buy</button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
         </div>
     </div>
 </div>

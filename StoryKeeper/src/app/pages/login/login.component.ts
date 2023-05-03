@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  form : FormGroup = new FormGroup({
+  logIn : FormGroup = new FormGroup({
     email: new FormControl(''),
     password: new FormControl('')
   });
@@ -18,18 +18,18 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router, private authService: AuthService, private formBuilder: FormBuilder){}
 
   ngOnInit(): void {
-    this.form = this.formBuilder.group({
+    this.logIn = this.formBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
     })
   }
 
   get email(){
-    return this.form.get('email');
+    return this.logIn.get('email');
   }
 
   get password(){
-    return this.form.get('password');
+    return this.logIn.get('password');
   }
 
   async login(){

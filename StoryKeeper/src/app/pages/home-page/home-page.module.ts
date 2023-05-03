@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { HomePageRoutingModule } from './home-page-routing.module';
 import { HomePageComponent } from './home-page.component';
-
+import { MatCardModule } from "@angular/material/card";
 
 @NgModule({
   declarations: [
@@ -11,7 +11,8 @@ import { HomePageComponent } from './home-page.component';
   ],
   imports: [
     CommonModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
+    MatCardModule
   ]
 })
 export class HomePageModule { }

@@ -49,10 +49,12 @@ export class RegistrationComponent implements OnInit {
   }
 
   onSubmit(){
+    /*
     if(this.password !== this.repassword){
-      console.log("Paaswords doesn't match!");
+      console.log("Paswords doesn't match!");
       return;
     }
+    */
 
     this.authService.signup(this.email?.value, this.password?.value).then(cred => {
       const user:User = {

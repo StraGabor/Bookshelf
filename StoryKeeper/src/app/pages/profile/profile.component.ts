@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { User } from '../../shared/models/User';
+import { UserService } from '../../shared/services/user.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  currUser?: User; 
+
+  constructor(private userService: UserService, private authService: AuthService) { }
 
   ngOnInit(): void {
+    
+  }
+
+  loggedIn(){
+    this.authService.isUserLoggedIn().subscribe((user: any) => {
+      if (user !== null || user !== undefined) {
+        this.currUser = user;
+      }else{
+        console.log("Nincs bejelentkezett user!");
+      }
+    });
   }
 
 }
