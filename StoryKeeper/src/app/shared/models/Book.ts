@@ -3,5 +3,6 @@ export interface Book{
     price: number,
     title: string,
     img: string,
-    type: string
+    type: string,
+    description: string
 }

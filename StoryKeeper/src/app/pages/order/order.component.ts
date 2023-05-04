@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { EditbookComponent } from 'src/app/shared/editbook/editbook.component';
+import { Book } from 'src/app/shared/models/Book';
+import { BookService } from 'src/app/shared/services/book.service';
 
 @Component({
   selector: 'app-order',
@@ -7,9 +11,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderComponent implements OnInit {
 
-  constructor() { }
+  bookList: Book[] = [];
+
+  constructor(private bookService: BookService, private _dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.bookService.getAllBook().subscribe((books: any[]) => {
+      this.bookList = books;
+    });
+  }
+
+  openEditDialog(){
+    this._dialog.open(EditbookComponent);
+  }
+
+  del(b: string){
+    console.log(b);
+    this.bookService.deleteBookById(b);
   }
 
 }

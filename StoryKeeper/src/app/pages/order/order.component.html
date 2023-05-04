@@ -1,1 +1,22 @@
 <h2>Here you can manage the books on the shop!</h2>
+
+<button mat-raised-button color="primary" (click)="openEditDialog()">Add Book</button>
+<table>
+    <thead>
+        <th>Title</th>
+        <th>Image</th>
+        <th>Type</th>
+        <th>Price</th>
+        <th>Description</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let book of bookList" >
+            <td>{{book.title}}</td>
+            <td>{{book.img}}</td>
+            <td>{{book.type}}</td>
+            <td>{{book.price}}</td>
+            <td>{{book.description}}</td>
+            <td><button (click)="del(book.id)">Delete</button></td>
+        </tr>
+    </tbody>
+</table>
