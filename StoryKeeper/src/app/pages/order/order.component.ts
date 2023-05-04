@@ -25,9 +25,9 @@ export class OrderComponent implements OnInit {
     this._dialog.open(EditbookComponent);
   }
 
-  del(b: string){
-    console.log(b);
-    this.bookService.deleteBookById(b);
+  del(id: string){
+    
+    this.bookService.deleteBook(id);
   }
 
 }

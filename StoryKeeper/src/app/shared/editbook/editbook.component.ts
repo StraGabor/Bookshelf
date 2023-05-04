@@ -9,8 +9,6 @@ import { BookService } from '../services/book.service';
 })
 export class EditbookComponent {
 
-  editForm : FormGroup;
-
   types: string[] = [
     'History',
     'Fantasy',
@@ -18,8 +16,13 @@ export class EditbookComponent {
     'Horror',
     'Classic'
   ]
+  editForm: any;
 
-  constructor(private bookService: BookService,private fb: FormBuilder){
+  constructor(public bookService: BookService, private fb: FormBuilder){
+    this.reset();
+  }
+
+  reset(editForm? : NgForm){
     this.editForm = this.fb.group({
       title: '',
       img: '',
@@ -30,17 +33,19 @@ export class EditbookComponent {
   }
 
   onSubmit(editForm: any){
-    let data = editForm.value;
+    let book = editForm.value;
 
-    if (editForm.value.id !== null) {
-      this.bookService.updateBook(data).then(() => {
+    if (editForm.value.id !== "") {
+      this.bookService.updateBook(book).then(() => {
         console.log("Book updated!");
+        this.reset();
       }).catch(err => {
         console.log(err);
       });
     }else{
-      this.bookService.createBook(data).then(() => {
+      this.bookService.createBook(book).then(() => {
         console.log("Book saved!");
+        this.reset();
       }).catch(err => {
         console.log(err);
       });
