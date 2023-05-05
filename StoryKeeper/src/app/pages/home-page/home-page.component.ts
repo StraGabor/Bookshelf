@@ -18,7 +18,7 @@ export class HomePageComponent implements OnInit, OnChanges {
   }
 
   async getBooks(){
-    this.bookService.getAllBook().subscribe((bookList: any[]) => {
+    this.bookService.getBooks().subscribe((bookList: any[]) => {
       this.books = bookList;
     });
   }

@@ -48,13 +48,13 @@
         <th>Description</th>
     </thead>
     <tbody>
-        <tr (click)="getGame(book)" *ngFor="let book of bookList" [class.recently-clicked-tr]="clickedRow === book" >
+        <tr  *ngFor="let book of bookList" >
             <td>{{book.title}}</td>
             <td>{{book.img}}</td>
             <td>{{book.type}}</td>
             <td>{{book.price}}</td>
             <td>{{book.description}}</td>
-            <td><button (click)="deleteBook(this.lastBook)">Delete</button></td>
+            <td><button >Delete</button></td>
         </tr>
     </tbody>
 </table>
