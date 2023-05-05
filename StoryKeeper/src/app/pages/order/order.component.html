@@ -3,34 +3,34 @@
 <div mat-dialog-title>
     <h1>Book form</h1>
 </div>
-<form [formGroup]="editForm" ngForm (ngSubmit)="onSubmit(editForm)">
+<form [formGroup]="editForm" ngForm (ngSubmit)="onSubmit()">
 <div mat-dialog-content>
     <div>
         <mat-form-field appearance="fill">
             <mat-label>Title</mat-label>
-            <input matInput type="text" formControlName="title" ngModel>
+            <input matInput type="text" formControlName="title">
         </mat-form-field>
         <br>
         <mat-form-field appearance="fill">
             <mat-label>Image</mat-label>
-            <input matInput type="text" formControlName="img" ngModel>
+            <input matInput type="text" formControlName="img">
         </mat-form-field>
         <br>
         <mat-form-field appearance="fill">
             <mat-label>Type</mat-label>
-                <mat-select formControlName="type" ngModel>
+                <mat-select #selectType formControlName="type" multiple>
                     <mat-option *ngFor="let t of types" [value]="t">{{t}}</mat-option>
                 </mat-select>
         </mat-form-field>
         <br>
         <mat-form-field appearance="fill">
             <mat-label>Price</mat-label>
-            <input matInput type="number" formControlName="price" ngModel>
+            <input matInput type="number" formControlName="price">
         </mat-form-field>
         <br>
         <mat-form-field appearance="fill">
             <mat-label>Description</mat-label>
-            <textarea matInput type="text" formControlName="description" ngModel></textarea>
+            <textarea matInput type="text" formControlName="description"></textarea>
         </mat-form-field>
     </div>
 </div>
@@ -54,7 +54,7 @@
             <td>{{book.type}}</td>
             <td>{{book.price}}</td>
             <td>{{book.description}}</td>
-            <td><button (click)="del(this.lastBook)">Delete</button></td>
+            <td><button (click)="deleteBook(this.lastBook)">Delete</button></td>
         </tr>
     </tbody>
 </table>
