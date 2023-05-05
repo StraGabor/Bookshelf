@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Book } from 'src/app/shared/models/Book';
+import { Book } from 'src/app/shared/modules/book/book.module';
 import { BookService } from 'src/app/shared/services/book.service';
 
 @Component({
@@ -18,7 +18,7 @@ export class HomePageComponent implements OnInit {
   }
 
   async getBooks(){
-    this.bookService.getBooks().subscribe((bookList: any[]) => {
+    this.bookService.getBooks("name","asc").subscribe((bookList: any[]) => {
       this.books = bookList;
     });
   }

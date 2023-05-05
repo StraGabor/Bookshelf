@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Book } from "../models/Book";
 import { AngularFirestore, DocumentChangeAction } from "@angular/fire/compat/firestore";
 import { Observable } from 'rxjs';
 import { DocumentReference } from '@angular/fire/firestore';
 import { setDoc } from 'firebase/firestore';
+import { Book } from '../modules/book/book.module';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +14,8 @@ export class BookService {
 
   constructor(private afs: AngularFirestore) { }
 
-  getBooks(){
-    return this.afs.collection<Book>(this.collectionName).valueChanges();
+  getBooks(order: string, direction: "asc" | "desc"){
+    return this.afs.collection('Books', ref => ref.orderBy(order, direction)).snapshotChanges();
   }
 
   updateBook(docRef: DocumentReference, book: Book){
@@ -26,16 +26,15 @@ export class BookService {
     )
   }
 
-  createBook(data: Book){
-    this.afs.collection(this.collectionName).add(data).then(
-      () => console.log("Book created!")
-    ).catch(
-      () => console.log("Book creation failed!")
-    )
+  createBook(book: any){
+    return this.afs.collection(this.collectionName).add(book);
   }
 
-  deleteBook(id: string){
-    return this.afs.collection<Book>(this.collectionName).doc(id).delete();
+  deleteBook(book: Book){
+    return new Promise<any>((resolve,reject) => {
+      this.afs.collection(this.collectionName).doc(book.id).delete().then(
+        res => {resolve(res)},err => {reject(err)});
+    });
   }
 
   getFantasy(){

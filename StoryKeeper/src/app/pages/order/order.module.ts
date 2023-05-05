@@ -19,7 +19,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     OrderRoutingModule,
     MatButtonModule,
-    MatButtonModule,
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,

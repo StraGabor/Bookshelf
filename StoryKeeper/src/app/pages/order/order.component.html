@@ -1,44 +1,43 @@
 <h2>Here you can manage the books on the shop!</h2>
 
-<div mat-dialog-title>
+<div mat-dialog-title id="form">
     <h1>Book form</h1>
-</div>
-<form [formGroup]="editForm" ngForm (ngSubmit)="onSubmit()">
+<form [formGroup]="editForm" (ngSubmit)="create()">
 <div mat-dialog-content>
     <div>
         <mat-form-field appearance="fill">
             <mat-label>Title</mat-label>
-            <input matInput type="text" formControlName="title" ngModel>
+            <input matInput type="text" formControlName="title">
         </mat-form-field>
         <br>
         <mat-form-field appearance="fill">
             <mat-label>Image</mat-label>
-            <input matInput type="text" formControlName="img" ngModel>
+            <input matInput type="text" formControlName="img">
         </mat-form-field>
         <br>
         <mat-form-field appearance="fill">
             <mat-label>Type</mat-label>
-                <mat-select #selectType formControlName="type" multiple ngModel>
+                <mat-select #selectType formControlName="type">
                     <mat-option *ngFor="let t of types" [value]="t">{{t}}</mat-option>
                 </mat-select>
         </mat-form-field>
         <br>
         <mat-form-field appearance="fill">
             <mat-label>Price</mat-label>
-            <input matInput type="number" formControlName="price" ngModel>
+            <input matInput type="number" formControlName="price">
         </mat-form-field>
         <br>
         <mat-form-field appearance="fill">
             <mat-label>Description</mat-label>
-            <textarea matInput type="text" formControlName="description" ngModel></textarea>
+            <textarea matInput type="text" formControlName="description"></textarea>
         </mat-form-field>
     </div>
 </div>
 <div mat-dialog-actions>
-    <button mat-raised-button color="primary" type="submit">Add</button>
-    <button mat-raised-button color="primary" type="submit">Update</button>
+    <button mat-raised-button type="submit" color="primary">Save</button>
 </div>
 </form>
+</div>
 <table>
     <thead>
         <th>Title</th>
@@ -54,7 +53,8 @@
             <td>{{book.type}}</td>
             <td>{{book.price}}</td>
             <td>{{book.description}}</td>
-            <td><button >Delete</button></td>
+            <td><button mat-raised-button color="basic" (click)="update()">Edit</button></td>
+            <td><button mat-raised-button color="warn" (click)="deleteBook(book)">Delete</button></td>
         </tr>
     </tbody>
 </table>

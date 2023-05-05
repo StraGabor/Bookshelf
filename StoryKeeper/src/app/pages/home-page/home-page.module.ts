@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HomePageRoutingModule } from './home-page-routing.module';
 import { HomePageComponent } from './home-page.component';
 import { MatCardModule } from "@angular/material/card";
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { MatCardModule } from "@angular/material/card";
   imports: [
     CommonModule,
     HomePageRoutingModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonModule
   ]
 })
 export class HomePageModule { }
