@@ -15,7 +15,8 @@
             <li><a routerLink="/home-page" >Home</a></li>
             <li><a routerLink="/profile" >Profile</a></li>
             <li><a routerLink="/cart" >Cart</a></li>
-            <li><a routerLink="/login" >Login</a></li>
+            <li><a routerLink="/login" *ngIf="!(loggedInUser)">Login</a></li>
+            <li><a routerLink="/login" *ngIf="loggedInUser" (click)="logout()">Logout</a></li>
             <li><a routerLink="/registration" >Registrate</a></li>
             <li><a routerLink="/order" >Manage</a></li>
           </ul>
