@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Book } from 'src/app/shared/models/Book';
 import { BookService } from 'src/app/shared/services/book.service';
 
@@ -7,7 +7,7 @@ import { BookService } from 'src/app/shared/services/book.service';
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss']
 })
-export class HomePageComponent implements OnInit, OnChanges {
+export class HomePageComponent implements OnInit {
 
   books?: Book[];
 
@@ -37,8 +37,5 @@ export class HomePageComponent implements OnInit, OnChanges {
     this.books = bookList as unknown as Book[];
   }
 
-  ngOnChanges(){
-    
-  }
 
 }

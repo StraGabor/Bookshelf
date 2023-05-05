@@ -17,14 +17,14 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { FIREBASE_OPTIONS } from "@angular/fire/compat";
-import { DatePipe } from './shares/pipes/date.pipe';
+import { DatePipe } from './shared/pipes/date.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    DatePipe,
+    DatePipe
   ],
   imports: [
     BrowserModule,

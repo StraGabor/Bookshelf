@@ -8,29 +8,29 @@
     <div>
         <mat-form-field appearance="fill">
             <mat-label>Title</mat-label>
-            <input matInput type="text" formControlName="title">
+            <input matInput type="text" formControlName="title" ngModel>
         </mat-form-field>
         <br>
         <mat-form-field appearance="fill">
             <mat-label>Image</mat-label>
-            <input matInput type="text" formControlName="img">
+            <input matInput type="text" formControlName="img" ngModel>
         </mat-form-field>
         <br>
         <mat-form-field appearance="fill">
             <mat-label>Type</mat-label>
-                <mat-select #selectType formControlName="type" multiple>
+                <mat-select #selectType formControlName="type" multiple ngModel>
                     <mat-option *ngFor="let t of types" [value]="t">{{t}}</mat-option>
                 </mat-select>
         </mat-form-field>
         <br>
         <mat-form-field appearance="fill">
             <mat-label>Price</mat-label>
-            <input matInput type="number" formControlName="price">
+            <input matInput type="number" formControlName="price" ngModel>
         </mat-form-field>
         <br>
         <mat-form-field appearance="fill">
             <mat-label>Description</mat-label>
-            <textarea matInput type="text" formControlName="description"></textarea>
+            <textarea matInput type="text" formControlName="description" ngModel></textarea>
         </mat-form-field>
     </div>
 </div>

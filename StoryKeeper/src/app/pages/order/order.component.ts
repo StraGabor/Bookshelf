@@ -5,6 +5,7 @@ import { BookService } from 'src/app/shared/services/book.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { MatSelect } from '@angular/material/select';
+import { Firestore, addDoc, collection } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-order',
@@ -22,8 +23,8 @@ export class OrderComponent implements OnInit {
     'Horror',
     'Classic'
   ]
-  
-  constructor(private bookService: BookService) { }
+
+  constructor(private bookService: BookService, private fs: Firestore) { }
 
   ngOnInit(): void {
     this.bookService.getBooks().subscribe((books: any[]) => {
@@ -41,7 +42,8 @@ export class OrderComponent implements OnInit {
   }
 
   onSubmit(){
-
+    
+    
   }
 
 }
