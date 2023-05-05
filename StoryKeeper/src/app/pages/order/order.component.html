@@ -1,6 +1,44 @@
 <h2>Here you can manage the books on the shop!</h2>
 
-<button mat-raised-button color="primary" (click)="openEditDialog()">Add Book</button>
+<div mat-dialog-title>
+    <h1>Book form</h1>
+</div>
+<form [formGroup]="editForm" ngForm (ngSubmit)="onSubmit(editForm)">
+<div mat-dialog-content>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Title</mat-label>
+            <input matInput type="text" formControlName="title" ngModel>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Image</mat-label>
+            <input matInput type="text" formControlName="img" ngModel>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Type</mat-label>
+                <mat-select formControlName="type" ngModel>
+                    <mat-option *ngFor="let t of types" [value]="t">{{t}}</mat-option>
+                </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Price</mat-label>
+            <input matInput type="number" formControlName="price" ngModel>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Description</mat-label>
+            <textarea matInput type="text" formControlName="description" ngModel></textarea>
+        </mat-form-field>
+    </div>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button color="primary" type="submit">Add</button>
+    <button mat-raised-button color="primary" type="submit">Update</button>
+</div>
+</form>
 <table>
     <thead>
         <th>Title</th>
@@ -10,13 +48,13 @@
         <th>Description</th>
     </thead>
     <tbody>
-        <tr *ngFor="let book of bookList" >
+        <tr (click)="getGame(book)" *ngFor="let book of bookList" [class.recently-clicked-tr]="clickedRow === book" >
             <td>{{book.title}}</td>
             <td>{{book.img}}</td>
             <td>{{book.type}}</td>
             <td>{{book.price}}</td>
             <td>{{book.description}}</td>
-            <td><button (click)="del(book.id)">Delete</button></td>
+            <td><button (click)="del(this.lastBook)">Delete</button></td>
         </tr>
     </tbody>
 </table>

@@ -24,8 +24,8 @@ editForm: any;
     return this.afs.collection<Book>(this.collectionName).doc(book.id).set(book);
   }
 
-  deleteBook(id: string){
-    return this.afs.collection<Book>(this.collectionName).doc(id).delete();
+  deleteBook(book: Book){
+    return this.afs.collection<Book>(this.collectionName).doc(book.id).delete();
   }
 
   getFantasy(){
