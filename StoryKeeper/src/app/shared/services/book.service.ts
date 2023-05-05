@@ -14,8 +14,8 @@ export class BookService {
 
   constructor(private afs: AngularFirestore) { }
 
-  getBooks(): Observable<DocumentChangeAction<unknown>[]>{
-    return this.afs.collection(this.collectionName).snapshotChanges();
+  getBooks(){
+    return this.afs.collection<Book>(this.collectionName).valueChanges();
   }
 
   updateBook(docRef: DocumentReference, book: Book){
