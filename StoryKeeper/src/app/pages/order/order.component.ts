@@ -57,6 +57,7 @@ export class OrderComponent implements OnInit {
     return this.editForm.get('price');
   }
 
+<<<<<<< HEAD
   get title(){
     return this.editForm.get('title');
   }
@@ -131,6 +132,11 @@ export class OrderComponent implements OnInit {
       type: new FormControl(''),
       description: new FormControl('')
     });
+=======
+  del(b: string){
+    console.log(b);
+    this.bookService.deleteBookById(b);
+>>>>>>> parent of b095190 (userGuard)
   }
 
 }

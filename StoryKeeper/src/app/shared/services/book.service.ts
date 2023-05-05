@@ -11,7 +11,6 @@ import { setDoc } from 'firebase/firestore';
 export class BookService {
 
   collectionName='Books';
-editForm: any;
 
   constructor(private afs: AngularFirestore) { }
 
@@ -35,8 +34,23 @@ editForm: any;
     )
   }
 
+<<<<<<< HEAD
   deleteBook(book: Book){
     return this.afs.collection<Book>(this.collectionName).doc(book.id).delete();
+=======
+  deleteBookById(id: string){
+    const docRef = this.afs.collection(this.collectionName).doc(id);
+    docRef.get().toPromise().then(doc => {
+      if(doc?.exists){
+        docRef.delete();
+        console.log(id+"has been deleted");
+      }else{
+        console.log("no delete");
+      }
+    }).catch(err => {
+      console.log(err);
+    });
+>>>>>>> parent of b095190 (userGuard)
   }
 
   getFantasy(){
