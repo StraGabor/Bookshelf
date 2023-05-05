@@ -13,6 +13,7 @@ import { MatSelect } from '@angular/material/select';
 })
 export class OrderComponent implements OnInit {
 
+  editForm : any;
   bookList: Book[] = [];
   types: string[] = [
     'History',
@@ -22,29 +23,11 @@ export class OrderComponent implements OnInit {
     'Classic'
   ]
   
-  constructor(private afs: AngularFirestore, private bookService: BookService, private fb: FormBuilder) { }
-
-  editForm = new FormGroup({
-    price: new FormControl('',[Validators.required]),
-    title: new FormControl('',[Validators.required]),
-    img: new FormControl('',[Validators.required]),
-    type: new FormControl(''),
-    description: new FormControl('')
-  });
+  constructor(private bookService: BookService) { }
 
   ngOnInit(): void {
     this.bookService.getBooks().subscribe((books: any[]) => {
-      this.bookList = books.map(i =>{
-        const data = i.payload.doc.data() as Book;
-        return {
-          id: i.payload.doc.id,
-          price: data.price,
-          title: data.title,
-          img: data.img,
-          type: data.type,
-          description: data.description
-        } as unknown as Book;
-      });
+      this.bookList = books;
     });
   }
 
@@ -58,7 +41,7 @@ export class OrderComponent implements OnInit {
   }
 
   onSubmit(){
-    
+
   }
 
 }
