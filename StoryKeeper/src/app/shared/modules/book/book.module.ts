@@ -7,14 +7,12 @@ export class Book{
     type: string;
     description: string;
 
-  constructor(Book: Book){
-    this.id = Book.id;
-    this.price = Book.price;
-    this.title = Book.title;
-    this.img = Book.img;
-    this.type = Book.type;
-    this.description = Book.description;
+  constructor(book: Book){
+    this.id = book.id;
+    this.price = book.price;
+    this.title = book.title;
+    this.img = book.img;
+    this.type = book.type;
+    this.description = book.description;
   }
-
 }
-

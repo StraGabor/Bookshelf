@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, DocumentChangeAction } from "@angular/fire/compat/firestore";
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { DocumentReference } from '@angular/fire/firestore';
 import { setDoc } from 'firebase/firestore';
 import { Book } from '../modules/book/book.module';
@@ -14,8 +14,16 @@ export class BookService {
 
   constructor(private afs: AngularFirestore) { }
 
-  getBooks(order: string, direction: "asc" | "desc"){
-    return this.afs.collection('Books', ref => ref.orderBy(order, direction)).snapshotChanges();
+  getBooks(){
+    return this.afs.collection<Book>(this.collectionName).snapshotChanges().pipe(
+      map((actions: DocumentChangeAction<Book>[]) => {
+        return actions.map((a: DocumentChangeAction<Book>) => {
+          const data = a.payload.doc.data() as Book;
+          const b = a.payload.doc.id;
+          return { b, ...data };
+        });
+      })
+    );
   }
 
   updateBook(docRef: DocumentReference, book: Book){
@@ -31,18 +39,16 @@ export class BookService {
   }
 
   deleteBook(book: Book){
-    return new Promise<any>((resolve,reject) => {
-      this.afs.collection(this.collectionName).doc(book.id).delete().then(
-        res => {resolve(res)},err => {reject(err)});
-    });
+    console.log(book.id);
+    return this.afs.collection<Book>('Books').doc(book.id).delete();
   }
 
   getFantasy(){
-    return this.afs.collection('book', ref => ref.where("type" ,"==", "Fantasy").orderBy("price","asc"));
+    return this.afs.collection('Books', ref => ref.where("type" ,"==", "Fantasy").orderBy("price","asc"));
   }
 
   getHistory(){
-    return this.afs.collection('book', ref => ref.where("type" ,"==", "History").orderBy("price","asc"));
+    return this.afs.collection('Books', ref => ref.where("type" ,"==", "History").orderBy("price","asc"));
   }
 
 }

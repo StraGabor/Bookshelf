@@ -47,14 +47,14 @@
         <th>Description</th>
     </thead>
     <tbody>
-        <tr  *ngFor="let book of bookList" >
-            <td>{{book.title}}</td>
-            <td>{{book.img}}</td>
-            <td>{{book.type}}</td>
-            <td>{{book.price}}</td>
-            <td>{{book.description}}</td>
+        <tr *ngFor="let i of bookList">
+            <td>{{i.title}}</td>
+            <td>{{i.img}}</td>
+            <td>{{i.type}}</td>
+            <td>{{i.price}}</td>
+            <td>{{i.description}}</td>
             <td><button mat-raised-button color="basic" (click)="update()">Edit</button></td>
-            <td><button mat-raised-button color="warn" (click)="deleteBook(book)">Delete</button></td>
+            <td><button mat-raised-button color="warn" (click)="deleteBook(i)">Delete</button></td>
         </tr>
     </tbody>
 </table>

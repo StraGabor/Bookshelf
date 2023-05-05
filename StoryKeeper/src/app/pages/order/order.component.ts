@@ -15,7 +15,8 @@ import { Subscription } from 'rxjs';
 })
 export class OrderComponent implements OnInit {
 
-
+  bookList?: Book[];
+  
   editForm = new FormGroup({
     title: new FormControl('',Validators.required),
     price: new FormControl(0,Validators.required),
@@ -35,44 +36,14 @@ export class OrderComponent implements OnInit {
   constructor(private bookService: BookService,private fb:FormBuilder, private fs: Firestore) { }
 
   ngOnInit(): void {
-    this.bookService.getBooks("name","asc").subscribe(array => {
-      this.bookList = array.map(i => {
-        const data = i.payload.doc.data() as Book;
-        return {
-          id: i.payload.doc.id,
-          price: data.price,
-          title: data.title,
-          img: data.img,
-          type: data.type,
-          description: data.description
-        } as unknown as Book
-      })
+    this.bookService.getBooks().subscribe((books: any[]) => {
+      this.bookList = books;
     });
   }
-  bookList?: Book[];
 
-  get title(){
-    return this.editForm.get('title');
-  }
-
-  get price(){
-    return this.editForm.get('price');
-  }
-  
-  get img(){
-    return this.editForm.get('img');
-  }
-  
-  get type(){
-    return this.editForm.get('type');
-  }
-
-  get description(){
-    return this.editForm.get('description');
-  }
-  
-  deleteBook(id: Book){
-    this.bookService.deleteBook(id);
+  deleteBook(d: Book){
+    console.log(d.id);
+    this.bookService.deleteBook(d);
   }
 
   create(){
