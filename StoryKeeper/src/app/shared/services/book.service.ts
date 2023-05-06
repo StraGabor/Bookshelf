@@ -26,12 +26,12 @@ export class BookService {
     );
   }
 
-  updateBook(docRef: DocumentReference, book: Book){
-    setDoc(docRef, book).then(
-      () => console.log("Book updated")
-    ).catch(
-      () => console.log("Book update failed!")
-    )
+  updateBook(book: Book){
+    let id = book.id;
+    return new Promise<any>((resolve,reject) =>{
+      this.afs.collection(this.collectionName).doc(id).update(book)
+      .then((res) => {resolve(res)}, (err) => reject(err));
+    });
   }
 
   createBook(book: any){

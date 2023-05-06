@@ -1,12 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { DocumentReference, doc, getDoc } from 'firebase/firestore';
+import { Component, OnInit } from '@angular/core';
 import { Book } from "../../shared/modules/book/book.module";
 import { BookService } from '../../shared/services/book.service';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
-import { MatSelect } from '@angular/material/select';
 import { Firestore, addDoc, collection } from '@angular/fire/firestore';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-order',
@@ -33,7 +29,10 @@ export class OrderComponent implements OnInit {
     'Classic'
   ]
 
-  constructor(private bookService: BookService,private fb:FormBuilder, private fs: Firestore) { }
+  constructor(
+    private bookService: BookService,
+    private fb:FormBuilder,
+    private fs: Firestore) { }
 
   ngOnInit(): void {
     this.bookService.getBooks().subscribe((books: any[]) => {
@@ -59,8 +58,10 @@ export class OrderComponent implements OnInit {
     .catch(err => {console.log(err)});
   }
 
-  update(){
-    
+  update(book: Book){
+    this.bookService.updateBook(book)
+    .then(() => console.log("Book updated!"))
+    .catch(err => console.log(err));
   }
 
 }

@@ -17,7 +17,7 @@ export class HomePageComponent implements OnInit {
     this.getBooks();
   }
 
-  async getBooks(){
+  getBooks(){
     this.bookService.getBooks().subscribe((bookList: any[]) => {
       this.books = bookList;
     });

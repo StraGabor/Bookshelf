@@ -2,15 +2,14 @@
     <button mat-raised-button color="primary" (click)="onFantasy()">Fantasy</button><button mat-raised-button color="primary" (click)="onHistory()">History</button>
     <div>
         <div class="book-list">
-            <mat-card class="book" *ngFor="let book of books">
+            <mat-card class="book" *ngFor="let i of books">
                 <mat-card-content>
-                    <img mat-card-image src="{{book.img}}" id="image">
+                    <img mat-card-image src="{{i.img}}" id="image">
                     <br>
-                    <mat-card-footer id="desc">{{book.description}}</mat-card-footer>
+                    <mat-card-footer id="desc">{{i.description}}</mat-card-footer>
                     <div id="down">
-                        <mat-card-footer id="price">{{book.price}} Ft</mat-card-footer>
+                        <mat-card-footer id="price">{{i.price}} Ft</mat-card-footer>
                         <button mat-raised-button (click)="addToCart()" color="primary" >Buy</button>
-                        
                     </div>
                 </mat-card-content>
             </mat-card>
