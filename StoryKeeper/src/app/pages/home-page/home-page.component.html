@@ -1,5 +1,7 @@
 <div id="books-site">
-    <button mat-raised-button color="primary" (click)="onFantasy()">Fantasy</button><button mat-raised-button color="primary" (click)="onHistory()">History</button>
+    <button mat-raised-button color="primary" (click)="onFantasy()">Fantasy</button>
+    <button mat-raised-button color="primary" (click)="onHistory()">History</button>
+    <button mat-raised-button color="primary" (click)="getBooks()">Reset</button>
     <div>
         <div class="book-list">
             <mat-card class="book" *ngFor="let i of books">

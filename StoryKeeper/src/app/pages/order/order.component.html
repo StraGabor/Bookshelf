@@ -1,9 +1,8 @@
-<h2>Here you can manage the books on the shop!</h2>
-
 <div mat-dialog-title id="form">
-    <h1>Book form</h1>
+    
 <form [formGroup]="editForm" (ngSubmit)="create()">
 <div mat-dialog-content>
+    <h1>Book form</h1>
     <div>
         <mat-form-field appearance="fill">
             <mat-label>Title</mat-label>
@@ -45,6 +44,8 @@
         <th>Type</th>
         <th>Price</th>
         <th>Description</th>
+        <th>Edit</th>
+        <th>Delete</th>
     </thead>
     <tbody>
         <tr *ngFor="let i of bookList">

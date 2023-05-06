@@ -28,14 +28,14 @@ export class HomePageComponent implements OnInit {
   }
 
   onFantasy(){
-    let bookList = this.bookService.getFantasy();
-    this.books = bookList as unknown as Book[];
+    this.bookService.getFantasy().valueChanges().subscribe((bookList: any[]) => {
+      this.books = bookList; 
+    });
   }
 
   onHistory(){
-    let bookList = this.bookService.getHistory();
-    this.books = bookList as unknown as Book[];
+    this.bookService.getHistory().valueChanges().subscribe((bookList: any[]) => {
+      this.books = bookList; 
+    });
   }
-
-
 }
