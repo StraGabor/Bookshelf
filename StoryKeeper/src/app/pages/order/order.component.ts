@@ -22,6 +22,7 @@ export class OrderComponent implements OnInit {
   });
 
   types: string[] = [
+    'Thriller',
     'History',
     'Fantasy',
     'Scifi',
